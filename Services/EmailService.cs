@@ -21,7 +21,7 @@ public class EmailService : IEmailService
     message.To.Add(MailboxAddress.Parse(toEmail));
     message.Subject = "Verify your email";
 
-    var verificationLink = $"http://localhost:5177/auth/verify?token={token}";
+    var verificationLink = $"http://localhost:5173/verify?token={token}";
 
     message.Body = new TextPart("plain")
     {

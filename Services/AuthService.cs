@@ -27,6 +27,11 @@ public class AuthService : IAuthService
 
   public async Task<User> RegisterAsync(string email, string password)
   {
+    if (string.IsNullOrWhiteSpace(email))
+      throw new ArgumentException("Email is required", nameof(email));
+
+    if (string.IsNullOrWhiteSpace(password))
+      throw new ArgumentException("Password is required", nameof(password));
     if (await _db.Users.AnyAsync(u => u.Email == email))
       throw new Exception("User already exists");
 
@@ -49,6 +54,8 @@ public class AuthService : IAuthService
     _db.EmailVerificationTokens.Add(verificationToken);
 
     await _db.SaveChangesAsync();
+    Console.WriteLine($"📬 Email going to: {user.Email}");
+
     await _emailService.SendVerificationEmailAsync(user.Email, verificationToken.Token);
 
     return user;
