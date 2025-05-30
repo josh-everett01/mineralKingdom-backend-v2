@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "58HEEIR5Tm4=",
+  "dgSpecHash": "ncHqjBGNKcU=",
   "success": true,
   "projectFilePath": "/Users/joshuaeverett/workspace/MineralKingdomV2/mineralKingdom-backend-v2/mineralKingdom-backend-v2.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/Users/joshuaeverett/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/mailkit/4.12.1/mailkit.4.12.1.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.3.0/microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512",
+    "/Users/joshuaeverett/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.5/microsoft.aspnetcore.authentication.jwtbearer.8.0.5.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.aspnetcore.authorization/2.3.0/microsoft.aspnetcore.authorization.2.3.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.aspnetcore.authorization.policy/2.3.0/microsoft.aspnetcore.authorization.policy.2.3.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.aspnetcore.connections.abstractions/2.3.0/microsoft.aspnetcore.connections.abstractions.2.3.0.nupkg.sha512",
@@ -58,6 +59,8 @@
     "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.abstractions/8.11.0/microsoft.identitymodel.abstractions.8.11.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.11.0/microsoft.identitymodel.jsonwebtokens.8.11.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.logging/8.11.0/microsoft.identitymodel.logging.8.11.0.nupkg.sha512",
+    "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.protocols/7.1.2/microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
+    "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/7.1.2/microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.identitymodel.tokens/8.11.0/microsoft.identitymodel.tokens.8.11.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.net.http.headers/2.3.0/microsoft.net.http.headers.2.3.0.nupkg.sha512",
     "/Users/joshuaeverett/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",

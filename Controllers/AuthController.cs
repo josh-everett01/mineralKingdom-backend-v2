@@ -16,7 +16,7 @@ public class AuthController : ControllerBase
   }
 
   [HttpPost("register")]
-  public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+  public async Task<IActionResult> Register([FromBody] RegisterRequestDTO request)
   {
     try
     {
@@ -30,7 +30,7 @@ public class AuthController : ControllerBase
   }
 
   [HttpPost("login")]
-  public async Task<IActionResult> Login([FromBody] LoginRequest request)
+  public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
   {
     try
     {
@@ -62,11 +62,11 @@ public class AuthController : ControllerBase
   }
 
   [HttpPost("refresh")]
-  public async Task<IActionResult> Refresh([FromBody] string refreshToken)
+  public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequestDTO dto)
   {
     try
     {
-      var tokens = await _authService.RefreshTokenAsync(refreshToken);
+      var tokens = await _authService.RefreshTokenAsync(dto.RefreshToken);
       return Ok(new
       {
         accessToken = tokens.AccessToken,
@@ -80,11 +80,11 @@ public class AuthController : ControllerBase
   }
 
   [HttpPost("logout")]
-  public async Task<IActionResult> Logout([FromBody] string refreshToken)
+  public async Task<IActionResult> Logout([FromBody] LogoutRequestDTO dto)
   {
     try
     {
-      await _authService.LogoutAsync(refreshToken);
+      await _authService.LogoutAsync(dto.RefreshToken);
       return Ok(new { message = "Logged out successfully" });
     }
     catch (Exception ex)

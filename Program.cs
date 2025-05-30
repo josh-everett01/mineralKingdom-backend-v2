@@ -14,6 +14,21 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+#pragma warning disable CS8604 // Possible null reference argument.
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                  Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+#pragma warning restore CS8604 // Possible null reference argument.
+    });
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -52,22 +67,6 @@ if (string.IsNullOrEmpty(jwtKey))
 {
     throw new InvalidOperationException("JWT Key is not configured in appsettings.");
 }
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-#pragma warning disable CS8604 // Possible null reference argument.
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                  Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        };
-#pragma warning restore CS8604 // Possible null reference argument.
-    });
 
 app.UseAuthentication();
 
