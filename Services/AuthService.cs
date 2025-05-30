@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using BCrypt.Net;
+using System.Text.RegularExpressions;
 
 namespace MineralKingdomApi.Services;
 
@@ -34,6 +35,8 @@ public class AuthService : IAuthService
       throw new ArgumentException("Password is required", nameof(password));
     if (await _db.Users.AnyAsync(u => u.Email == email))
       throw new Exception("User already exists");
+
+    ValidatePasswordStrength(password);
 
     var user = new User
     {
@@ -192,6 +195,18 @@ public class AuthService : IAuthService
       UserAgent = context.Request.Headers["User-Agent"].ToString(),
       DeviceName = context.Request.Headers["Device-Name"].ToString() ?? "unknown"
     };
+  }
+
+  private void ValidatePasswordStrength(string password)
+  {
+    if (string.IsNullOrWhiteSpace(password) ||
+        password.Length < 8 ||
+        !Regex.IsMatch(password, @"[A-Z]") ||
+        !Regex.IsMatch(password, @"[0-9]") ||
+        !Regex.IsMatch(password, @"[\W_]"))
+    {
+      throw new Exception("Password must be at least 8 characters long and include an uppercase letter, number, and special character.");
+    }
   }
 }
 
