@@ -208,5 +208,11 @@ public class AuthService : IAuthService
       throw new Exception("Password must be at least 8 characters long and include an uppercase letter, number, and special character.");
     }
   }
+
+  public AuthResponseDTO ToAuthResponse(string accessToken, string refreshToken) => new()
+  {
+    AccessToken = accessToken,
+    RefreshToken = refreshToken
+  };
 }
 
